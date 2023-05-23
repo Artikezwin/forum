@@ -1,9 +1,10 @@
-package ru.mirea.newsforum.service;
+package ru.mirea.newsforum.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.mirea.newsforum.entity.Post;
 import ru.mirea.newsforum.repository.PostRepository;
+import ru.mirea.newsforum.service.PostService;
 
 @Service
 @RequiredArgsConstructor

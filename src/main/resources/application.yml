@@ -1,10 +1,11 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
 #    url: jdbc:mysql://localhost:3306/news_forum?sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
-    url: jdbc:mysql://localhost:3306/news_forum?useSSL=false
-    username: root
-    password: ''
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/forum
+
+    username: user
+    password: 1234
   jpa:
     hibernate:
       ddl-auto: update

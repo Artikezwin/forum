@@ -1,18 +1,11 @@
 package ru.mirea.newsforum.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
-import org.hibernate.engine.spi.ManagedEntity;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ru.mirea.newsforum.entity.ImageEntity;
-import ru.mirea.newsforum.repository.ImageRepository;
 import ru.mirea.newsforum.service.ImageService;
 
-import java.awt.*;
 import java.io.IOException;
 
 @RestController

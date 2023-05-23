@@ -9,7 +9,6 @@ import java.io.File;
 
 @Entity
 @Accessors(chain = true)
-@Table
 @Getter
 @Setter
 public class Post {

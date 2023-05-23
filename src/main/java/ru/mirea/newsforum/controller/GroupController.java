@@ -22,15 +22,11 @@ public class GroupController {
 
     @PostMapping("/save")
     public ResponseEntity<GroupEntity> save(@RequestBody GroupDTO groupDTO) {
-        int year = LocalDate.now().getYear();
-        int course = year - Integer.parseInt(
-                Integer.toString(year).substring(0, 2)
-                        + groupDTO.getGroup().substring(groupDTO.getGroup().length() - 2)
-        );
+        int course = groupService.parseCourse(groupDTO.getGroup());
         log.info("Course: " + course);
 
         GroupEntity group = new GroupEntity();
-        group.setGroup(groupDTO.getGroup());
+        group.setGroupNumber(groupDTO.getGroup());
         group.setCourse(course);
 
         return ResponseEntity.ok(groupService.save(group));
