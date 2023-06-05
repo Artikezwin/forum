@@ -11,7 +11,6 @@ import ru.mirea.newsforum.dto.GroupDTO;
 import ru.mirea.newsforum.entity.GroupEntity;
 import ru.mirea.newsforum.service.GroupService;
 
-import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/group")

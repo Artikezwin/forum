@@ -28,7 +28,7 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public int parseCourse(String group) {
         pattern = Pattern.compile("^[a-zA-Zа-яА-Я]{4}-\\d{2}-\\d{2}$");
-        log.info("INFO: " + pattern.matcher(group).find());
+        //log.info("INFO: " + pattern.matcher(group).find());
 
         if (pattern.matcher(group).find()) {
             int year = LocalDate.now().getYear();

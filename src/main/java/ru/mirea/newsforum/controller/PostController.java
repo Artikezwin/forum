@@ -11,10 +11,13 @@ import ru.mirea.newsforum.entity.Post;
 import ru.mirea.newsforum.service.GroupService;
 import ru.mirea.newsforum.service.PostService;
 
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RestController
 @RequestMapping("/post")
+@CrossOrigin("http://localhost:8000")
 @RequiredArgsConstructor
 @Slf4j
 public class PostController {
@@ -33,8 +36,9 @@ public class PostController {
         return ResponseEntity.ok(post);
     }
 
-    @GetMapping("/getByCourseOrGroup/{groupNumber}")
-    public ResponseEntity<List<Post>> getPost(@PathVariable String groupNumber) {
+    @GetMapping("/getByCourseOrGroup/{groupToDecode}")
+    public ResponseEntity<List<Post>> getPost(@PathVariable String groupToDecode) {
+        String groupNumber = URLDecoder.decode(groupToDecode, StandardCharsets.UTF_8);
         GroupEntity group = groupService.parseGroup(groupNumber);
         List<Post> posts = postService.findPostByCourseOrGroup(group.getCourse(), group);
         return ResponseEntity.ok(posts);
