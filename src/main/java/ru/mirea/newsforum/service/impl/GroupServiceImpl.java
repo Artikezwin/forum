@@ -9,6 +9,8 @@ import ru.mirea.newsforum.repository.GroupRepository;
 import ru.mirea.newsforum.service.GroupService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 @Service
@@ -39,5 +41,15 @@ public class GroupServiceImpl implements GroupService {
 
         throw new CustomException("GROUP_IS_INVALID", "Группа была введена не корректно");
 //        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "GROUP_IS_INVALID");
+    }
+
+    @Override
+    public List<GroupEntity> parseGroups(List<String> groupNumbers) {
+        List<GroupEntity> groups = new ArrayList<>();
+        for(String groupNumber: groupNumbers) {
+            groups.add(groupRepository.findById(groupNumber).orElseThrow(() -> new CustomException("GROUP_NOT_FOUND", "Группа не найдена")));
+        }
+
+        return groups;
     }
 }

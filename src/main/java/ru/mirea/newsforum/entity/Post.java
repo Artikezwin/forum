@@ -3,21 +3,26 @@ package ru.mirea.newsforum.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
-import java.io.File;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Accessors(chain = true)
 @Getter
 @Setter
-public class Post {
+@ToString
+public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private long id;
 
-    private String text;
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<GroupEntity> groups;
-    private File photo;
+    private String header;
+    private String content;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<GroupEntity> groups;
+    private String imageUrl;
 }
