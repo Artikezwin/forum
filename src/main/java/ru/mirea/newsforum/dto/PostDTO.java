@@ -10,4 +10,5 @@ public class PostDTO {
     private String content;
     private List<String> groups;
     private String imageUrl;
+    private int course;
 }

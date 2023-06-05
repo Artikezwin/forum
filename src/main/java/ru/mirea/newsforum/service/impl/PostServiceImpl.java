@@ -34,4 +34,14 @@ public class PostServiceImpl implements PostService {
     public void deleteById(long id) {
         postRepository.deleteById(id);
     }
+
+    @Override
+    public List<Post> findByGroup(GroupEntity group) {
+        return postRepository.findByGroupsContains(group);
+    }
+
+    @Override
+    public List<Post> findPostByCourseOrGroup(int course, GroupEntity group) {
+        return postRepository.findPostByCourseOrGroupsContains(course, group);
+    }
 }

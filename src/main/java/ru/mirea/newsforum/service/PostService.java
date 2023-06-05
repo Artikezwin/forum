@@ -11,4 +11,6 @@ public interface PostService {
     List<Post> findAllPosts();
     Post findById(long id);
     void deleteById(long id);
+    List<Post> findByGroup(GroupEntity group);
+    List<Post> findPostByCourseOrGroup(int course, GroupEntity group);
 }

@@ -25,4 +25,5 @@ public class Post implements Serializable {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<GroupEntity> groups;
     private String imageUrl;
+    private int course;
 }

@@ -52,4 +52,9 @@ public class GroupServiceImpl implements GroupService {
 
         return groups;
     }
+
+    @Override
+    public GroupEntity parseGroup(String groupNumber) {
+        return groupRepository.findById(groupNumber).orElseThrow(() -> new CustomException("GROUP_NOT_FOUND", "Группа не найдена"));
+    }
 }

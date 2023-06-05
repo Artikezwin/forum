@@ -33,15 +33,22 @@ public class PostController {
         return ResponseEntity.ok(post);
     }
 
+    @GetMapping("/getByCourseOrGroup/{groupNumber}")
+    public ResponseEntity<List<Post>> getPost(@PathVariable String groupNumber) {
+        GroupEntity group = groupService.parseGroup(groupNumber);
+        List<Post> posts = postService.findPostByCourseOrGroup(group.getCourse(), group);
+        return ResponseEntity.ok(posts);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<Post> savePost(@RequestBody PostDTO postDTO) {
         List<GroupEntity> groups = groupService.parseGroups(postDTO.getGroups());
-        log.warn(groups.toString());
 
         Post post = new Post()
                 .setGroups(groups)
                 .setHeader(postDTO.getHeader())
                 .setContent(postDTO.getContent())
+                .setCourse(postDTO.getCourse())
                 .setImageUrl(postDTO.getImageUrl());
 
         return ResponseEntity.ok(postService.save(post));
